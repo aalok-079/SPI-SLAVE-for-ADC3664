@@ -1,12 +1,12 @@
-module spi_write(sclk, sdio, sen,reset);
+module spi(sclk, sdio, sen,reset);
 
-input sclk;
+input sclk; 
 inout sdio;
 input sen;
 input reset;
-reg sdio_reg_s=1'b0; //for reading 
+reg sdio_reg_s=1'b0; //refers sdio register of slave which is used while transfering data from slave to master
 reg [2:0]data_count_r=3'b000; // for counting reading data
-reg [7:0] memory[4095:0];
+reg [7:0] memory[4095:0]; //memory array declaration
 reg [7:0] data=8'b0;       //register to store 8 bit data
 reg [11:0] address=12'b0;  //register to store 12 bit address
 reg [23:0] bit_24_reg =24'b0; //regiter to store whole transaction
@@ -14,7 +14,7 @@ reg [4:0] bit_counter =5'b0; //counter for counting bits
 reg [2:0] data_count_w=3'b0; //for counting no. of bits of writing data
 reg [3:0] address_count=4'b0; // for counting no. of bits of address
 reg read_write_bit=1'b0;
-//reg [7:0] mem[11:0];
+
 parameter NO=2'b00, READ=2'b01, WRITE=2'b10;
 reg [1:0] state=NO;
 
@@ -22,7 +22,7 @@ assign sdio = (read_write_bit) ? sdio_reg_s : 1'hz;
 
 always@(posedge sclk or posedge reset or posedge sen) begin
 
- // reset block for reseting signals
+ // reset block for reseting signals when reset is high
  if(reset)begin
  data<=8'b0;
  address<=12'b0;
@@ -51,26 +51,18 @@ always@(posedge sclk or posedge reset or posedge sen) begin
   
  //if block to judge whether to read or write
   if (bit_counter == 5'b01111) begin
-    if (bit_24_reg[23]) begin
+    if (bit_24_reg[23]) begin //if bit is high then read else write
         state <= READ;
-        
+        read_write_bit <= 1'b1;
     end
-    else
+    else begin
         state <= WRITE;
+        read_write_bit <= 1'b0;
+    end
   end
   
-  if (bit_counter == 5'b01111) begin
-    if (bit_24_reg[23]) begin
-        read_write_bit <= 1'b1;
-        
-    end
-    else
-        read_write_bit <= 1'b0;
-  end 
-      
-    
   
- //if block to transfer data
+ //if block to write data when masters writes
   if((bit_counter>5'b01111) && (bit_counter<5'b11000)) begin
   case(state) 
   
@@ -85,7 +77,8 @@ always@(posedge sclk or posedge reset or posedge sen) begin
   
   
  end
- else begin // block when what to do sen is 0 and reset is 0
+ // block when what to do sen is 0 and reset is 0
+ else begin 
  data<=8'b0;
  address<=12'b0;
  bit_24_reg<=24'b0;
@@ -100,11 +93,15 @@ end
 
 always@(negedge sclk or posedge reset or posedge sen) begin
 
+// reset block for reseting signals when reset is high
 if(reset)begin
 data_count_r<=3'b0;
 end
 
+        // block what to do when sen is 0
 	if(!sen) begin
+	
+	//if block to transfer data when master reads
 	if((bit_counter>5'b01111) && (bit_counter<5'b11000)) begin
 	
 	case (state)
@@ -119,7 +116,7 @@ end
 	
 	end
 	end
-	
+	// block when what to do sen is 0 and reset is 0
 	else begin
 	data_count_r<=3'b0;
 	end
