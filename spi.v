@@ -13,7 +13,7 @@ reg [23:0] bit_24_reg =24'b0; //regiter to store whole transaction
 reg [4:0] bit_counter =5'b0; //counter for counting bits
 reg [2:0] data_count_w=3'b0; //for counting no. of bits of writing data
 reg [3:0] address_count=4'b0; // for counting no. of bits of address
-reg read_write_bit=1'b0;
+reg read_write_bit=1'b0; // to decide which operation to perform
 
 parameter NO=2'b00, READ=2'b01, WRITE=2'b10;
 reg [1:0] state=NO;
@@ -112,6 +112,7 @@ end
 		sdio_reg_s <= memory[address][7-data_count_r] ;
   
 		end
+		
 	endcase
 	
 	end
