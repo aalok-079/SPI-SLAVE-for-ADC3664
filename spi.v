@@ -1,9 +1,9 @@
 module spi(sclk, sdio, sen,reset);
 
-input sclk; 
-inout sdio;
-input sen;
-input reset;
+input sclk; // sclk clock by master
+inout sdio; // input output line
+input sen; //line which lows when tranction is started
+input reset; // reset when high
 reg sdio_reg_s=1'b0; //refers sdio register of slave which is used while transfering data from slave to master
 reg [2:0]data_count_r=3'b000; // for counting reading data
 reg [7:0] memory[4095:0]; //memory array declaration
