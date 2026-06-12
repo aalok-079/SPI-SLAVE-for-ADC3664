@@ -1,0 +1,290 @@
+$date
+	Fri Jun 12 16:30:26 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module spi_tb $end
+$var wire 1 ! sdio $end
+$var reg 8 " data_store [7:0] $end
+$var reg 1 # decide $end
+$var reg 24 $ in [23:0] $end
+$var reg 1 % reset $end
+$var reg 1 & sclk $end
+$var reg 1 ' sdio_reg_m $end
+$var reg 1 ( sen $end
+$var integer 32 ) i [31:0] $end
+$scope module S1 $end
+$var wire 1 % reset $end
+$var wire 1 & sclk $end
+$var wire 1 ! sdio $end
+$var wire 1 ( sen $end
+$var parameter 2 * NO $end
+$var parameter 2 + READ $end
+$var parameter 2 , WRITE $end
+$var reg 12 - address [11:0] $end
+$var reg 4 . address_count [3:0] $end
+$var reg 24 / bit_24_reg [23:0] $end
+$var reg 5 0 bit_counter [4:0] $end
+$var reg 8 1 data [7:0] $end
+$var reg 3 2 data_count_r [2:0] $end
+$var reg 3 3 data_count_w [2:0] $end
+$var reg 1 4 read_write_bit $end
+$var reg 1 5 sdio_reg_s $end
+$var reg 2 6 state [1:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10 ,
+b1 +
+b0 *
+$end
+#0
+$dumpvars
+b0 6
+05
+04
+b0 3
+b0 2
+b0 1
+b0 0
+b0 /
+b0 .
+b0 -
+b0 )
+1(
+x'
+1&
+0%
+b10100000110110001100 $
+0#
+b0 "
+x!
+$end
+#50
+1%
+0&
+#90
+0%
+#100
+1&
+#150
+0&
+#200
+b1 0
+0!
+1&
+0'
+0(
+#250
+0&
+#300
+b10 0
+1&
+b1 )
+#350
+0&
+#400
+b11 0
+1&
+b10 )
+#450
+0&
+#500
+b100 0
+1&
+b11 )
+#550
+0&
+#600
+b100000000000 -
+b1 .
+b10000000000000000000 /
+b101 0
+1!
+1&
+1'
+b100 )
+#650
+0&
+#700
+b10 .
+b110 0
+0!
+1&
+0'
+b101 )
+#750
+0&
+#800
+b101000000000 -
+b11 .
+b10100000000000000000 /
+b111 0
+1!
+1&
+1'
+b110 )
+#850
+0&
+#900
+b100 .
+b1000 0
+0!
+1&
+0'
+b111 )
+#950
+0&
+#1000
+b101 .
+b1001 0
+1&
+b1000 )
+#1050
+0&
+#1100
+b110 .
+b1010 0
+1&
+b1001 )
+#1150
+0&
+#1200
+b111 .
+b1011 0
+1&
+b1010 )
+#1250
+0&
+#1300
+b1000 .
+b1100 0
+1&
+b1011 )
+#1350
+0&
+#1400
+b101000001000 -
+b1001 .
+b10100000100000000000 /
+b1101 0
+1!
+1&
+1'
+b1100 )
+#1450
+0&
+#1500
+b101000001100 -
+b1010 .
+b10100000110000000000 /
+b1110 0
+1&
+b1101 )
+#1550
+0&
+#1600
+b1011 .
+b1111 0
+0!
+1&
+0'
+b1110 )
+#1650
+0&
+#1700
+b10 6
+b101000001101 -
+b1100 .
+b10100000110100000000 /
+b10000 0
+1!
+1&
+1'
+b1111 )
+#1750
+0&
+#1800
+b1 3
+b10100000110110000000 /
+b10001 0
+1&
+b10000 )
+#1850
+0&
+#1900
+b10 3
+b10010 0
+0!
+1&
+0'
+b10001 )
+#1950
+0&
+#2000
+b11 3
+b10011 0
+1&
+b10010 )
+#2050
+0&
+#2100
+b100 3
+b10100 0
+1&
+b10011 )
+#2150
+0&
+#2200
+b101 3
+b10100000110110001000 /
+b10101 0
+1!
+1&
+1'
+b10100 )
+#2250
+0&
+#2300
+b110 3
+b10100000110110001100 /
+b10110 0
+1&
+b10101 )
+#2350
+0&
+#2400
+b111 3
+b10111 0
+0!
+1&
+0'
+b10110 )
+#2450
+0&
+#2500
+b0 3
+b11000 0
+1&
+b10111 )
+#2550
+0&
+#2600
+b0 6
+b0 .
+b0 0
+b0 /
+b0 -
+1&
+1(
+b11000 )
+#2650
+0&
+#2700
+1&
